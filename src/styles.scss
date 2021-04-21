@@ -1,0 +1,35 @@
+@import '~@angular/material/theming';
+//colors
+$primary: ( Main:#001632, Light:#001632, Dark: #001632, contrast: ( Main: black, Light: black, Dark: black));
+$accent: ( Main:#61b3d1, Light:#61b3d1, Dark: #61b3d1, contrast: ( Main: #ffff, Light: #ffff, Dark: #ffff));
+$warn: ( Main:#fd5859, Light:#fd5859, Dark: #fd5859, contrast: ( Main: #ffff, Light: #ffff, Dark: #ffff));
+$innsalesFront-primary: mat-palette($primary, Main, Light, Dark);
+$innsalesFront-accent: mat-palette($accent, Main, Light, Dark);
+$innsalesFront-warn: mat-palette($warn, Main, Light, Dark);
+$innsalesFront-theme: mat-light-theme(( color: ( primary: $innsalesFront-primary, accent: $innsalesFront-accent, warn: $innsalesFront-warn, )));
+//typography
+@include angular-material-theme($innsalesFront-theme);
+$custom-typography: mat-typography-config( $headline: mat-typography-level(40px, 40px, 700), $title: mat-typography-level(45px, 45px, 600), $body-1: mat-typography-level(30px, 30px, 600), $body-2: mat-typography-level(30px, 30px, 600), $subheading-1: mat-typography-level(30px, 30px, 600), $subheading-2: mat-typography-level(30px, 30px, 600), $caption: mat-typography-level(30px, 30px, 600), $button: mat-typography-level(30px, 30px, 600));
+@include mat-core($custom-typography);
+@include angular-material-typography($custom-typography);
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+span {
+    font-size: 25px;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 45px;
+}

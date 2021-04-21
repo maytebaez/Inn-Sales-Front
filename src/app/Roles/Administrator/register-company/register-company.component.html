@@ -1,0 +1,115 @@
+<div class="parent">
+    <form [formGroup]="frmNewCompany" (submit)="registerCompany()">
+        <mat-card style="background-color: 	#f8f8f8;">
+            <mat-card-title style="color:#ec4c40;">
+                Company Information
+            </mat-card-title>
+            <mat-card-subtitle>
+                Please enter the data
+            </mat-card-subtitle>
+            <mat-card-content>
+                <mat-grid-list cols="2" rowHeight="fit" style="height: 400px; width: 600px;">
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="name" id="name" placeholder="" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmNewCompany.controls['name'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>City</mat-label>
+                            <input matInput formControlName="city" id="city" placeholder="" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmNewCompany.controls['city'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>State/Province</mat-label>
+                            <input matInput formControlName="state" id="state" placeholder="" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmNewCompany.controls['state'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Country</mat-label>
+                            <input matInput formControlName="country" id="country" placeholder="" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmNewCompany.controls['country'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Postal Code</mat-label>
+                            <input matInput formControlName="postalCode" id="postalCode" placeholder="" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmNewCompany.controls['postalCode'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Address</mat-label>
+                            <input matInput formControlName="address" id="address" placeholder="" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmNewCompany.controls['address'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Area Code</mat-label>
+                            <input matInput formControlName="areaCode" id="areaCode" placeholder="593" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmNewCompany.controls['areaCode'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Phone</mat-label>
+                            <input matInput formControlName="phoneNumber" id="phoneNumber" placeholder="0983965368" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmNewCompany.controls['phoneNumber'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="frmNewCompany.controls['phoneNumber'].hasError('minlength') || frmNewCompany.controls['phoneNumber'].hasError('maxlength') ">
+                                Please enter 10 numbers
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                </mat-grid-list>
+
+                <mat-grid-list cols="1" rowHeight="fit" style="height: 50px; width: 600px;">
+                    <mat-grid-tile class="full-width">
+                        <button mat-raised-button color="accent" type="submit" style="height: 50px; width: 300px;">Save Information</button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+            </mat-card-content>
+        </mat-card>
+
+    </form>
+</div>

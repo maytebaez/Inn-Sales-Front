@@ -1,0 +1,191 @@
+<div fxLayout="row" fxLayoutAlign="end center" class="mt-5 mx-5">
+    <button mat-raised-button color="secondary" (click)="backPage()">Back</button>
+</div>
+
+<div class="parent">
+    <form [formGroup]="frmUpdateCompany" (submit)="modifyCompany()">
+        <mat-card style="background-color: 	#f8f8f8;">
+            <mat-card-title style="color:#ec4c40;">
+                Company Information
+            </mat-card-title>
+            <mat-card-subtitle>
+                Udpdate Data Company
+            </mat-card-subtitle>
+            <mat-card-content>
+                <mat-grid-list cols="2" rowHeight="fit" style="height: 600px; width: 600px;">
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="name" id="name" placeholder="" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmUpdateCompany.controls['name'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>City</mat-label>
+                            <input matInput formControlName="city" id="city" placeholder="" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmUpdateCompany.controls['city'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>State/Province</mat-label>
+                            <input matInput formControlName="state" id="state" placeholder="" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmUpdateCompany.controls['state'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Country</mat-label>
+                            <input matInput formControlName="country" id="country" placeholder="" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmUpdateCompany.controls['country'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Postal Code</mat-label>
+                            <input matInput formControlName="postalCode" id="postalCode" placeholder="" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmUpdateCompany.controls['postalCode'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Address</mat-label>
+                            <input matInput formControlName="address" id="address" placeholder="" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmUpdateCompany.controls['address'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Area Code</mat-label>
+                            <input matInput formControlName="areaCode" id="areaCode" placeholder="593" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmUpdateCompany.controls['areaCode'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Phone</mat-label>
+                            <input matInput formControlName="phoneNumber" id="phoneNumber" placeholder="0983965368" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmUpdateCompany.controls['phoneNumber'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="frmUpdateCompany.controls['phoneNumber'].hasError('minlength') || frmUpdateCompany.controls['phoneNumber'].hasError('maxlength') ">
+                                Please enter 10 numbers
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                </mat-grid-list>
+
+                <mat-grid-list cols="1" rowHeight="fit" style="height: 50px; width: 600px;">
+                    <mat-grid-tile class="full-width">
+                        <button mat-raised-button color="accent" type="submit" style="height: 50px; width: 300px;">Update Information</button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+            </mat-card-content>
+        </mat-card>
+
+    </form>
+</div>
+
+<div class="headerContainer">
+    <div fxLayout="row" fxLayoutAlign="space-evenly center">
+        <h1 fxFlex="50%">
+            Company Users
+        </h1>
+        <mat-form-field fxFlex="33%">
+            <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Serch user...">
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button color="accent" (click)="newUser()">
+                <mat-icon>add</mat-icon>
+                New User   
+            </button>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="dataSource.data.length == 0">
+        <h4 style="color: #bdc7cc ;">No registered users.</h4>
+    </div>
+
+</div>
+
+<div class="tableContainer" *ngIf="dataSource.data.length > 0">
+
+    <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+            <td mat-cell *matCellDef="let element"> <span>{{element.us_firstName}}</span> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+            <td mat-cell *matCellDef="let element"> <span>{{element.us_lastName}} </span> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="role">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
+            <td mat-cell *matCellDef="let element"> <span>{{element.us_role}} </span> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+            <td mat-cell *matCellDef="let element"> <span>{{element.us_email}} </span> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="areaCode">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Area Code </th>
+            <td mat-cell *matCellDef="let element"> <span> {{element.us_areaCode}} </span> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cellphone">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Cellphone </th>
+            <td mat-cell *matCellDef="let element"> <span>{{element.us_cellphone}} </span> </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="options">
+            <th mat-header-cell *matHeaderCellDef> Details </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="accent" (click)="viewDetails(element._id)">
+                    <mat-icon>visibility</mat-icon>     
+                </button>
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]">
+    </mat-paginator>
+</div>

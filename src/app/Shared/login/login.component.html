@@ -1,0 +1,45 @@
+<div class="parent">
+    <div class="img-container">
+        <img src="assets/images/logo.png" alt="">
+    </div>
+    <div class="login-card">
+
+        <div class="center-container">
+            <strong><h1 style="color: white;"  class="mt-5">SIGN IN</h1> </strong>
+        </div>
+
+        <form [formGroup]="frmLogin" (submit)="login()">
+            <div class="input-container">
+                <h4 style="color: white;">Email</h4>
+                <input formControlName="email" id="email" placeholder="Ex. pat@example.com" type="email" class="form-control rounded-pill">
+                <span style="color: #bdc7cc;" *ngIf="frmLogin.controls['email'].hasError('email') && frmLogin.touched">
+                    Invalid Email
+                </span>
+                <span style="color: #bdc7cc;" *ngIf="frmLogin.controls['email'].hasError('required') && frmLogin.touched"> 
+                    Required*
+                </span>
+            </div>
+
+            <div class="input-container mt-5 mb-5">
+
+                <h4 style="color: white;">Password</h4>
+                <input formControlName="password" id="password" type="password" class="form-control rounded-pill">
+                <span style="color: #bdc7cc;" *ngIf="frmLogin.controls['password'].hasError('required') && frmLogin.touched">
+                   Required*
+                </span>
+
+            </div>
+
+            <div class="center-container mb-5 mt-3">
+                <button type="submit" class="full-width btn btn-outline-light btn-lg rounded-pill">
+                    SIGN IN
+                </button>
+                <br>
+            </div>
+        </form>
+
+    </div>
+    <div class="center-container">
+        <a style="color: #bdc7cc ;" href="https://www.innsales.io/">www.insales.io</a>
+    </div>
+</div>

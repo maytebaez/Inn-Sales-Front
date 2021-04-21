@@ -1,0 +1,61 @@
+<div class="parent">
+    <div fxLayoutGap fxLayout="row" fxLayoutAlign="center center" class="parent">
+        <h1>
+            <mat-icon>leaderboard</mat-icon>
+            Monthly Achievements
+        </h1>
+    </div>
+
+    <div fxLayoutGap fxLayout="row" fxLayoutAlign="space-around center">
+        <div class="element">
+            <h2 style="color:#bdc7cc ;">Conversion Rate</h2>
+            <h2 style="color:#748488 ;">45%</h2>
+            <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions" [chartType]="doughnutChartType" [colors]="doughnutChartColors">
+            </canvas>
+        </div>
+        <div class="element">
+            <h2 style="color: 	#bdc7cc ;">Number of Calls</h2>
+            <h2 style="color:#748488 ;">60</h2>
+            <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions" [chartType]="doughnutChartType" [colors]="doughnutChartColors2">
+            </canvas>
+        </div>
+        <div class="element">
+            <h2 style="color: 	#bdc7cc ;">Qualified Leads</h2>
+            <h2 style="color:#748488 ;">27</h2>
+            <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions" [chartType]="doughnutChartType" [colors]="doughnutChartColors">
+            </canvas>
+        </div>
+    </div>
+</div>
+
+
+<div fxLayoutGap fxLayout="row" fxLayoutAlign="center center">
+    <h1>
+        <mat-icon>supervisor_account</mat-icon>
+        Leads
+    </h1>
+</div>
+
+<div class="element">
+    <div class="parent" *ngFor="let lead of leads">
+
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title> {{lead.le_firstName}} {{lead.le_lastName}}</mat-card-title>
+                <mat-card-subtitle> {{lead.le_email}}</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                <div fxLayout="column" fxLayoutAlign="space-between start">
+                    <h1>{{lead.le_area}}</h1>
+                    <h2>100% Qualified </h2>
+                </div>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button mat-raised-button color="accent" (click)="seeMeeting(lead._id)">Meeting</button>
+            </mat-card-actions>
+
+        </mat-card>
+    </div>
+</div>

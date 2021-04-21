@@ -1,0 +1,10 @@
+{
+    "hosting": {
+        "public": "dist/innsalesFront/",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ]
+    }
+}

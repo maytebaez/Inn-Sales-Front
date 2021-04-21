@@ -1,0 +1,18 @@
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    // height: 100%;
+    margin-top: 50px;
+    margin-bottom: 200px;
+    // background-color: #bdc7cc;
+}
+
+.default {
+    color: rgb(168, 168, 168);
+}
+
+.full-width {
+    width: 95%;
+}

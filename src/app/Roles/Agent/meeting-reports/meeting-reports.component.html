@@ -1,0 +1,99 @@
+<div class="parent">
+    <mat-horizontal-stepper [linear]="isLinear" #stepper color="warn">
+
+        <mat-step label="Upload file" color="warn">
+            <div class="element">
+                <button mat-raised-button color="accent" (click)="fileInput.click()">Upload Audio File</button>
+                <input type="file" #fileInput style="display: none" id="fileInput" (change)="uploadFile($event)" accept="any/*" />
+            </div>
+        </mat-step>
+
+        <mat-step label="Conversation">
+            <div fxLayout="row" fxLayoutAlign="space-around start">
+                <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="50">
+                    <h1>Conversation audio</h1>
+
+                    <div class="reproductor">
+                        <audio [src]="audioFile" type="audio/wav">
+                            
+                        </audio>
+                        <button mat-icon-button color="accent" (click)="playAudio()" *ngIf="playButton">
+                            <h1>
+                                <mat-icon class="icon-display">play_circle_outline</mat-icon >
+                            </h1>
+                        </button>
+                        <button mat-icon-button color="warn" (click)="stopAudio()" *ngIf="!playButton">
+                            <h1>
+                                <mat-icon class="icon-display">pause_circle_outline</mat-icon>
+                            </h1>
+                        </button>
+                    </div>
+                </div>
+
+
+                <div fxFlex="50">
+                    <h1>Conversation Transcript</h1>
+                    <span>{{meeting.me_transcript}}</span>
+                </div>
+            </div>
+
+        </mat-step>
+
+        <mat-step label="Meeting Reports">
+
+            <div fxLayoutGap fxLayout="row" fxLayoutAlign="center center">
+                <div class="element">
+                    <h2 style="color:#bdc7cc ;">Time in call</h2>
+                    <h2 style="color:#748488 ;">{{meeting.me_timeInCall}}</h2>
+                    <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions" [chartType]="doughnutChartType" [colors]="doughnutChartColors">
+                        </canvas>
+                </div>
+                <div class="element">
+                    <h2 style="color: 	#bdc7cc ;">Lead Conversation</h2>
+                    <h3>Me/Lead</h3>
+                    <div fxLayout="row" fxLayoutAlign="center center" style="width: 300px;">
+                        <div [fxFlex]="meeting.me_agentTime" class="divLeadCo" style="background-color: #00bcd5;">
+                            <h1 style="color:#748488 ; font-size: 25px;">{{meeting.me_agentTime}}%</h1>
+                        </div>
+                        <div [fxFlex]="meeting.me_leadTime" class="divLeadCo" style="background-color: #bdc7cc;">
+                            <h1 style="color:#748488 ; font-size: 25px;">{{meeting.me_leadTime}}%</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="element">
+                    <h2 style="color: 	#bdc7cc ;">Meeting score</h2>
+                    <h2 style="color:#748488 ;">{{meeting.me_score}}%</h2>
+                    <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions" [chartType]="doughnutChartType" [colors]="doughnutChartColors">
+                    </canvas>
+                </div>
+            </div>
+
+        </mat-step>
+        <mat-step label="Lead Reports">
+            <div fxLayoutGap fxLayout="row" fxLayoutAlign="center center">
+                <div class="element">
+                    <h2 style="color:#bdc7cc ;">Lead Qualification</h2>
+                    <h2 style="color:#748488 ;">{{meeting.me_leadQualification}}%</h2>
+                    <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions" [chartType]="doughnutChartType" [colors]="doughnutChartColors">
+                        </canvas>
+                </div>
+                <div class="element">
+                    <h2 style="color: 	#bdc7cc ;">Lead Scoring</h2>
+                    <h2 style="color:#748488 ;">{{meeting.me_leadScore}}%</h2>
+                    <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions" [chartType]="doughnutChartType" [colors]="doughnutChartColors2">
+                    </canvas>
+                </div>
+                <div class="element">
+                    <div class="divBorder">
+                        <h2 style="color: 	#bdc7cc ;">Can lead advance?</h2>
+                        <h1 style="color:	#00bcd5 ;">Not yet</h1>
+                    </div>
+                    <div class="divBorder">
+                        <h2 style="color: 	#bdc7cc ;">Voice Sentiment</h2>
+                        <h1 style="color:	#00bcd5 ;">{{meeting.me_voiceSentiment}}</h1>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

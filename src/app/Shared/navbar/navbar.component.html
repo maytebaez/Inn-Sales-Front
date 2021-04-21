@@ -1,0 +1,78 @@
+<mat-toolbar style="color: #FFFF;" *ngIf="headerAgent">
+    <mat-toolbar-row>
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-start center">
+            <img src="assets/images/logo.png" style="height: 50px; margin-left: 20px; margin-right: 20px;" alt="logo">
+            <a mat-button style="color: black;" href="agent/dashboard">Main Dashboard</a>
+            <a mat-button style="color: black;" href="agent/leads">Leads</a>
+            <a mat-button style="color: black;" href="agent/meetings">Meetings</a>
+            <!-- <a mat-button style="color: black;" href="agent/meetingReports">Meeting Reports</a> -->
+            <!-- <button mat-button style="color: black;">Leads</button>
+            <button mat-button style="color: black;">KPIs</button> -->
+        </div>
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+
+            <button mat-icon-button color="primary">
+                <mat-icon>notifications</mat-icon>
+            </button>
+            <!-- <mat-menu #menu1="matMenu">
+                <button mat-menu-item (click)="verNotificacion(item)" *ngFor="let item of notifications" class="buttonNot">
+                            <h3 class="title" *ngIf="item.isActive" style="color: rgb(44, 241, 192);"> {{item.title}}</h3>
+                            <span *ngIf="item.isActive" style="color: rgb(44, 241, 192);"> {{item.body}}</span>
+                            <h3 class="title" *ngIf="!item.isActive" > {{item.title}}</h3>
+                            <span *ngIf="!item.isActive" > {{item.body}}</span>
+                            <hr>
+                    </button>
+            </mat-menu> -->
+            <button mat-button color="primary" [matMenuTriggerFor]="menu2">
+                <mat-icon>person</mat-icon>
+            </button>
+            <mat-menu #menu2="matMenu">
+                <button mat-menu-item (click)="userService.logout()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    Cerrar sesión
+                </button>
+            </mat-menu>
+
+
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-toolbar style="color: #FFFF;" *ngIf="headerAdmin">
+    <mat-toolbar-row>
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-start">
+            <img src="assets/images/logo.png" style="height: 50px; margin-left: 20px; margin-right: 20px;" alt="logo">
+            <a mat-button style="color: black;" href="admin/companies-record">Companies Record</a>
+
+        </div>
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+
+            <button mat-icon-button color="primary">
+                <mat-icon>notifications</mat-icon>
+            </button>
+            <!-- <mat-menu #menu1="matMenu">
+                <button mat-menu-item (click)="verNotificacion(item)" *ngFor="let item of notifications" class="buttonNot">
+                            <h3 class="title" *ngIf="item.isActive" style="color: rgb(44, 241, 192);"> {{item.title}}</h3>
+                            <span *ngIf="item.isActive" style="color: rgb(44, 241, 192);"> {{item.body}}</span>
+                            <h3 class="title" *ngIf="!item.isActive" > {{item.title}}</h3>
+                            <span *ngIf="!item.isActive" > {{item.body}}</span>
+                            <hr>
+                    </button>
+            </mat-menu> -->
+            <button mat-button color="primary" [matMenuTriggerFor]="menu2">
+                <mat-icon>person</mat-icon>
+            </button>
+            <mat-menu #menu2="matMenu">
+                <button mat-menu-item (click)="userService.logout()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    Cerrar sesión
+                </button>
+            </mat-menu>
+
+
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

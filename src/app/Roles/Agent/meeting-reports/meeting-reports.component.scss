@@ -1,0 +1,66 @@
+.parent {
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    // height: 100%;
+    width: 100%;
+}
+
+.element {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.divBorder {
+    border-color: #bdc7cc;
+    border-style: solid;
+    width: 400px;
+    height: 200px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2%;
+}
+
+.divLeadCo {
+    // border-color: #bdc7cc;
+    // border-style: solid;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // width: 200px;
+}
+
+.reproductor {
+    background-color: #bdc7cc;
+    height: 90px;
+    width: 250px;
+    border-radius: 5%;
+    border-style: solid;
+    border-color: #748488;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.icon-display {
+    transform: scale(2);
+}
+
+.button-ico {
+    margin-left: 10px;
+    margin-right: 10px;
+}

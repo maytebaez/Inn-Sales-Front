@@ -1,0 +1,132 @@
+<div fxLayout="row" fxLayoutAlign="end center" class="mt-5 mx-5">
+    <button mat-raised-button color="secondary" (click)="backPage()">Back</button>
+</div>
+
+<div class="parent">
+    <form [formGroup]="frmNewUser" (submit)="registerUser()">
+        <mat-card style="background-color: 	#f8f8f8;">
+            <mat-card-title style="color:#ec4c40;">
+                User Information
+            </mat-card-title>
+            <mat-card-subtitle>
+                Please enter the data
+            </mat-card-subtitle>
+            <mat-card-content>
+                <mat-grid-list cols="2" rowHeight="fit" style="height: 600px; width: 800px;">
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>First Name</mat-label>
+                            <input matInput formControlName="us_firstName" id="us_firstNname" placeholder="" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmNewUser.controls['us_firstName'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput formControlName="us_lastName" id="us_lastName" placeholder="" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmNewUser.controls['us_lastName'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Area Code</mat-label>
+                            <input matInput formControlName="us_areaCode" id="us_areaCode" placeholder="593" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmNewUser.controls['us_areaCode'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Cellphone</mat-label>
+                            <input matInput formControlName="us_cellphone" id="us_cellphone" placeholder="0983965368" class="form-control">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmNewUser.controls['us_cellphone'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="frmNewUser.controls['us_cellphone'].hasError('minlength') || frmNewUser.controls['us_cellphone'].hasError('maxlength') ">
+                                Please enter 10 numbers
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="us_email" id="us_email" placeholder="Ex: example@gmail.com" class="form-control" type="email">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmNewUser.controls['us_email'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="frmNewUser.controls['us_email'].hasError('email')">
+                                <strong>Please enter a valid email</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field appearance="fill" class="full-width">
+                            <mat-label>Role</mat-label>
+                            <mat-select color="light" formControlName="us_role" id="type">
+                                <mat-option value="SUPERVISOR">Supervisor</mat-option>
+                                <mat-option value="AGENT">Agent</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="frmNewUser.controls['us_role'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Password</mat-label>
+                            <input matInput formControlName="us_password" id="us_password" class="form-control" type="password">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmNewUser.controls['us_password'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="frmNewUser.controls['us_password'].hasError('minlength')">
+                                Enter at least 8 characters
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field class="full-width">
+                            <mat-label>Confirm Password</mat-label>
+                            <input matInput formControlName="verifyPassword" class="form-control" type="password">
+                            <mat-hint></mat-hint>
+                            <mat-error *ngIf="frmNewUser.controls['verifyPassword'].hasError('required')">
+                                <strong>Required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="frmNewUser.controls['verifyPassword'].hasError('NoPasswordMatch')">
+                                Passwords do not match
+                            </mat-error>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+
+                </mat-grid-list>
+
+                <mat-grid-list cols="1" rowHeight="fit" style="height: 50px; width: 600px;">
+                    <mat-grid-tile class="full-width">
+                        <button mat-raised-button color="accent" type="submit" style="height: 50px; width: 300px;">Save Information</button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+            </mat-card-content>
+        </mat-card>
+
+    </form>
+</div>
